@@ -10,16 +10,18 @@ public class Partner {
     private PartnerStatus status;
     private String creationDate;
 
-    Partner(int id, String companyName, String contactCommercial, Transport transportType, PartnerStatus status, String creationDate) {
+
+    public Partner(int id, String companyName, String contactCommercial, Transport transportType, PartnerStatus status, String creationDate) {
         this.id = id;
         this.companyName = companyName;
         this.contactCommercial = contactCommercial;
         this.transportType = transportType;
         this.status = status;
         this.creationDate = creationDate;
+
     }
 
-    Partner() {
+    public Partner() {
 
     }
 
