@@ -4,13 +4,15 @@ import Model.Partner;
 import Enum.Transport;
 import Enum.PartnerStatus;
 import  Enum.ContratStatus;
+import Repository.PartnerRepository;
 import UI.mainMenu;
 
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         Dbconnexion.getConnection();
 
@@ -21,7 +23,8 @@ public class Main {
 //
 //        System.out.println(salus.getPartner().getCreationDate());
 
-        mainMenu.menu();
+//        mainMenu.menu();
+        PartnerRepository.getAllPartners();
 
 
     }
