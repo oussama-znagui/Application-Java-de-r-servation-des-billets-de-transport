@@ -1,8 +1,6 @@
 package Model;
 import Enum.ContratStatus;
 
-import java.util.Collection;
-
 public class Contract {
     private int id;
     private String startDate;
