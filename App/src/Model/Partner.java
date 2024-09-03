@@ -6,15 +6,19 @@ public class Partner {
     private int id;
     private String companyName;
     private String contactCommercial;
+    private String geographicalArea;
+    private String conditionsSpeciales;
     private Transport transportType;
     private PartnerStatus status;
     private String creationDate;
 
 
-    public Partner(int id, String companyName, String contactCommercial, Transport transportType, PartnerStatus status, String creationDate) {
+    public Partner(int id, String companyName, String contactCommercial,String geographicalArea,String conditionsSpeciales, Transport transportType, PartnerStatus status, String creationDate) {
         this.id = id;
         this.companyName = companyName;
         this.contactCommercial = contactCommercial;
+        this.geographicalArea = geographicalArea;
+        this.conditionsSpeciales = conditionsSpeciales;
         this.transportType = transportType;
         this.status = status;
         this.creationDate = creationDate;
@@ -44,6 +48,12 @@ public class Partner {
     public String getCreationDate() {
         return this.creationDate;
     }
+    public String getGeographicalArea() {
+        return this.geographicalArea;
+    }
+    public String getConditionsSpeciales() {
+        return this.conditionsSpeciales;
+    }
 
     //Setters
     public void setId(int id) {
@@ -63,6 +73,16 @@ public class Partner {
     }
     public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
+    }
+    public void setGeographicalArea(String geographicalArea) {
+        this.geographicalArea = geographicalArea;
+    }
+    public void setConditionsSpeciales(String conditionsSpeciales) {
+        this.conditionsSpeciales = conditionsSpeciales;
+    }
+
+    public String toString(){
+        return  (this.id + "\t\t" + this.companyName + "\t\t" + this.contactCommercial + "\t\t" + this.geographicalArea + "\t\t" + this.conditionsSpeciales + "\t\t" + this.transportType + "\t\t" + this.status + "\t\t" + this.creationDate);
     }
 
 
