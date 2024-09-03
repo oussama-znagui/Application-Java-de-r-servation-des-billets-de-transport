@@ -3,13 +3,12 @@ import Model.Contract;
 import Model.Partner;
 import Enum.Transport;
 import Enum.PartnerStatus;
-import  Enum.ContratStatus;
-import Repository.PartnerRepository;
-import UI.mainMenu;
+import Enum.ContractStatus;
+import Repository.ContractRepository;
 
 
 import java.sql.SQLException;
-import java.util.Scanner;
+import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -26,14 +25,23 @@ public class Main {
 
 //        mainMenu.menu();
 
-        PartnerRepository.addPartner(allo2);
-        PartnerRepository partnerRepository = new PartnerRepository();
-        //partnerRepository.deletePartner(allo2);
-        Partner allo3 = new Partner(0,"goloto","0103040566","europe","a remlir PT",Transport.TRAIN,PartnerStatus.ACTIVE,"12/12/2022");
-        partnerRepository.updatePartner(allo2,allo3);
-        PartnerRepository.displayAllPartners();
-         Partner hey = partnerRepository.getPartnerById(3);
-        System.out.println(hey.getCreationDate());
+//        PartnerRepository.addPartner(allo2);
+//        PartnerRepository partnerRepository = new PartnerRepository();
+//        //partnerRepository.deletePartner(allo2);
+//        Partner allo3 = new Partner(0,"goloto","0103040566","europe","a remlir PT",Transport.TRAIN,PartnerStatus.ACTIVE,"12/12/2022");
+//        partnerRepository.updatePartner(allo2,allo3);
+//        PartnerRepository.displayAllPartners();
+//         Partner hey = partnerRepository.getPartnerById(3);
+//        System.out.println(hey);
+
+
+        Partner RayanAir = new Partner(3,"rayan air","0123483309","MENA & EUROPE","a remplir",Transport.AIRPLANE,PartnerStatus.ACTIVE,"03/09/2024");
+        Contract contract = new Contract(0, LocalDate.parse("2020-01-08"),LocalDate.parse("2020-01-08"),13,"a remlir",true, ContractStatus.ONGOING,RayanAir);
+        ContractRepository contractRepository = new ContractRepository();
+        if (contractRepository.addContract(contract)){
+            System.out.println("Contract added");
+        }
+
 
 
 

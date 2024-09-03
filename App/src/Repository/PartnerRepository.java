@@ -46,14 +46,8 @@ public class PartnerRepository implements PartnerRepositoryInterface {
             rs = p.executeQuery();
             System.out.println(rs.next());
             System.out.println(rs.getString("companyname"));
-
-            if(rs.next()){
-                Partner partner = toPartner(rs);
-                return partner;
-            }
-            else {
-                return null;
-            }
+            Partner partner = toPartner(rs);
+            return partner;
 
 
 

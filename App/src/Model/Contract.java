@@ -1,17 +1,19 @@
 package Model;
-import Enum.ContratStatus;
+import Enum.ContractStatus;
+
+import java.time.LocalDate;
 
 public class Contract {
     private int id;
-    private String startDate;
-    private String endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private float specialRate;
     private String termsOfAgreement;
     private Boolean renewable;
-    private ContratStatus status;
+    private ContractStatus status;
    private Partner partner;
 
-    public Contract(int id, String startDate, String endDate, float specialRate, String termsOfAgreement, Boolean renewable, ContratStatus status, Partner partner) {
+    public Contract(int id, LocalDate startDate, LocalDate endDate, float specialRate, String termsOfAgreement, Boolean renewable, ContractStatus status, Partner partner) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -35,18 +37,18 @@ public class Contract {
     }
 
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -72,10 +74,10 @@ public class Contract {
         this.renewable = renewable;
     }
 
-    public ContratStatus getStatus() {
+    public ContractStatus getStatus() {
         return status;
     }
-     public void setStatus(ContratStatus status) {
+     public void setStatus(ContractStatus status) {
         this.status = status;
      }
      public Partner getPartner() {

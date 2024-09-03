@@ -1,6 +1,6 @@
 package Enum;
 
-public enum ContratStatus {
+public enum ContractStatus {
     ONGOING,
     FINISHED,
     SUSPENDED,

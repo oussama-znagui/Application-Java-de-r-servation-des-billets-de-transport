@@ -1,6 +1,11 @@
 package Model;
+import Config.Dbconnexion;
 import Enum.Transport;
 import Enum.PartnerStatus;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class Partner {
     private int id;
@@ -84,7 +89,21 @@ public class Partner {
     public String toString(){
         return  (this.id + "\t\t" + this.companyName + "\t\t" + this.contactCommercial + "\t\t" + this.geographicalArea + "\t\t" + this.conditionsSpeciales + "\t\t" + this.transportType + "\t\t" + this.status + "\t\t" + this.creationDate);
     }
+    public void addPartner() throws SQLException {
+        Connection con = Dbconnexion.getConnection();
+        PreparedStatement ps = null;
 
+        try {
+            String sql = "insert into Partners (companyname,contactcommercial,transportType,geographicalarea,conditionsSpeciales,status,creationDate) Values('westCompany','340534063','BUS','MENA','a remlir','ACTIVE','02/09/2024')";
+            ps = con.prepareStatement(sql);
+            ps.execute();
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+
+
+    }
 
 
 }
