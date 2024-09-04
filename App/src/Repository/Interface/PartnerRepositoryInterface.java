@@ -17,7 +17,7 @@ public interface PartnerRepositoryInterface {
         return null;
     }
     public Partner getPartnerById(int id) throws SQLException;
-    public static void add(Partner partner) throws SQLException{};
+    public   void addPartner(Partner partner) throws SQLException;
     public boolean deletePartner(Partner partner) throws SQLException;
     public boolean updatePartner(Partner partner,Partner newPartner) throws SQLException;
 

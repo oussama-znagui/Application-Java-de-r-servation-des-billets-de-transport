@@ -108,12 +108,12 @@ public class PartnerRepository implements PartnerRepositoryInterface {
     }
 
 
-    public static void addPartner(Partner partner) throws SQLException {
+    public void addPartner(Partner partner) throws SQLException {
         Connection con = Dbconnexion.getConnection();
         PreparedStatement ps = null;
 
         try {
-            String sql = "insert into Partners (companyname,contactcommercial,transportType,geographicalarea,conditionsSpeciales,status,creationDate) Values('westCompany','340534063','BUS','MENA','a remlir','ACTIVE','02/09/2024')";
+            String sql = "insert into Partners (companyname,contactcommercial,transportType,geographicalarea,conditionsSpeciales,status,creationDate) Values('"+ partner.getCompanyName() +"','"+ partner.getContactCommercial()+"','"+ partner.getTransportType() +"','"+ partner.getGeographicalArea()+"','"+ partner.getConditionsSpeciales() +"','"+ partner.getStatus() +"','"+ partner.getCreationDate() +"')";
             ps = con.prepareStatement(sql);
             ps.execute();
         }
@@ -131,7 +131,7 @@ public class PartnerRepository implements PartnerRepositoryInterface {
         PreparedStatement p=null;
         Connection con= Dbconnexion.getConnection();
         try{
-            String sql="delete from partners where id=1";
+            String sql="delete from partners where id=" + partner.getId();
             p =con.prepareStatement(sql);
             p.execute();
             return true;
@@ -156,7 +156,7 @@ public class PartnerRepository implements PartnerRepositoryInterface {
         String creationDate = newPartner.getCreationDate();
 
         try{
-            String sql="update partners set companyname='"+ companyName  + "',contactCommercial='"+ contactCommercial +"',geographicalArea='"+ geographicalArea +"',conditionsSpeciales='"+ conditionsSpeciales +"',transportType='"+ transportType +"',status='"+ transportType +"',creationDate='"+ creationDate +"' where id = 5" ;
+            String sql="update partners set companyname='"+ companyName  + "',contactCommercial='"+ contactCommercial +"',geographicalArea='"+ geographicalArea +"',conditionsSpeciales='"+ conditionsSpeciales +"',transportType='"+ transportType +"',status='"+ status +"',creationDate='"+ creationDate +"' where id = " + partnerID ;
             p =con.prepareStatement(sql);
             p.execute();
             return true;
