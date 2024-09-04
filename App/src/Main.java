@@ -46,7 +46,12 @@ public class Main {
 //        contractRepository.displayAllContracts();
 
 
-        mainMenu.menu();
+     mainMenu.menu();
+//
+//        Contract contract = contractRepository.getContractById(3);
+//
+//
+//    System.out.println(contract.getPartner());
 
 
 

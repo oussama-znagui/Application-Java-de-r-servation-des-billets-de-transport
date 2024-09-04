@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import Enum.ContractStatus;
@@ -66,6 +67,32 @@ public class ContractRepository implements ContractRepositoryInterface {
         return contract;
     }
 
+    public Contract getContractById(int id) throws SQLException {
+            Connection conn = Dbconnexion.getConnection();
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            Contract contract  = null;
+            try {
+                String sql = "SELECT partners.status as pstatus,* FROM contracts  join partners on contracts.partnerid = partners.id and contracts.id=?";
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1,id);
+                rs = ps.executeQuery();
+                if(rs.next()){
+                    System.out.println("bien");
+
+                    contract = toContract(rs);
+                }
+
+
+            }catch(SQLException  e){
+                System.out.println(e);
+                System.out.println("alooo");
+
+            }
+            return contract;
+
+    }
+
 
 
     public List<Contract> getAllContracts() throws SQLException {
@@ -99,5 +126,43 @@ public class ContractRepository implements ContractRepositoryInterface {
         contracts.forEach((contract) -> {
             System.out.println(contract.toString());
         });
+    }
+
+    public void updateContract(Contract contract,Contract newContract) throws SQLException {
+        Connection conn = Dbconnexion.getConnection();
+        PreparedStatement ps = null;
+        int id = contract.getId();
+        String startdate = newContract.getStartDate().toString();
+
+        String endDate = newContract.getEndDate().toString();
+        float specialRate = newContract.getSpecialRate();
+        String termsOfAgreement = newContract.getTermsOfAgreement();
+        boolean renewable = newContract.getRenewable();
+        ContractStatus status = newContract.getStatus();
+        try{
+            System.out.println("try exec");
+            String sql="update contracts set startdate='"+ startdate  + "',enddate='"+ endDate +"',specialrate='"+ specialRate +"',termsOfAgreement='"+ termsOfAgreement +"',renewable='"+ renewable + "',status='" + status + "' where id = " + id;
+            ps =conn.prepareStatement(sql);
+            ps.execute();
+
+        }catch(SQLException  e){
+            System.out.println(e);
+
+
+        }
+    }
+
+
+    public void deleteContract(Contract contract) throws SQLException {
+        Connection conn = Dbconnexion.getConnection();
+        PreparedStatement ps = null;
+        int id = contract.getId();
+        try{
+            String sql = "delete from contracts where id = " + id;
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+        }catch (SQLException  e){
+            System.out.println(e);
+        }
     }
 }

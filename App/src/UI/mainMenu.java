@@ -1,5 +1,6 @@
 package UI;
 
+import Service.ContractService;
 import Service.PartnerService;
 
 import java.sql.SQLException;
@@ -7,6 +8,7 @@ import java.util.Scanner;
 
 public class mainMenu  {
     public static PartnerService partnerService = new PartnerService();
+    public static ContractService contractService = new ContractService();
 
 
     public static void menu() throws SQLException {
@@ -53,7 +55,7 @@ public class mainMenu  {
         System.out.println("1. List des parteners");
         System.out.println("2. Ajouter un partener");
         System.out.println("3. Modifier un partener");
-        System.out.println("3. Supprimer un partener");
+        System.out.println("4. Supprimer un partener");
 
         Scanner scanner = new Scanner(System.in);
         int option = scanner.nextInt();
@@ -84,16 +86,40 @@ public class mainMenu  {
 
     }
 
-    public static void contratsMenu(){
+    public static void contratsMenu() throws SQLException {
         System.out.println("Welcome to the contrats menu");
         System.out.println("---------------------");
         System.out.println("1. List des contrats");
-        System.out.println("1. Ajouter un contrat");
-        System.out.println("2. Modifier un contrat");
-        System.out.println("3. Supprimer un contrat");
+        System.out.println("2. Ajouter un contrat");
+        System.out.println("3. Modifier un contrat");
+        System.out.println("4. Supprimer un contrat");
 
         Scanner scanner = new Scanner(System.in);
         int option = scanner.nextInt();
+
+        switch(option){
+            case 1:
+                System.out.println("Liste des contrats");
+                contractService.displayAllContracts();
+                contratsMenu();
+                break;
+            case 2:
+                System.out.println("Ajouter un contrat");
+                contractService.addContract();
+                contratsMenu();
+                break;
+            case 3:
+                System.out.println("Modifier un contrat");
+                contractService.updateContract();
+                contratsMenu();
+                break;
+            case 4:
+                System.out.println("Suprimer un contrat");
+                contractService.deleteContract();
+                contratsMenu();
+                break;
+
+        }
     }
 
     public static void ticketsMenu(){
