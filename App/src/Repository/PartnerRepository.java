@@ -65,6 +65,8 @@ public class PartnerRepository implements PartnerRepositoryInterface {
 
 
 
+
+
     public static List<Partner>  getAllPartners() throws SQLException {
 
         Connection con = Dbconnexion.getConnection();

@@ -13,6 +13,7 @@ public class mainMenu {
           System.out.println("2. Gestion des contrats");
           System.out.println("3. Gestion des tickets");
           System.out.println("4. Gestion des offres");
+          System.out.println("\nVotre choix svp! : ");
 
           Scanner scanner = new Scanner(System.in);
           int option = scanner.nextInt();

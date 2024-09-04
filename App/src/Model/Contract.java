@@ -87,6 +87,10 @@ public class Contract {
         this.partner = partner;
      }
 
+    public String toString(){
+        return  (this.id + "\t\t" + this.startDate + "\t\t" + this.endDate + "\t\t" + this.specialRate + "\t\t" + this.termsOfAgreement + "\t\t" + this.renewable + "\t\t" + this.status + "\t\t -> partner : " + this.partner.getCompanyName());
+    }
+
 
 
 }

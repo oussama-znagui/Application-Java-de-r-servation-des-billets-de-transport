@@ -5,6 +5,7 @@ import Enum.Transport;
 import Enum.PartnerStatus;
 import Enum.ContractStatus;
 import Repository.ContractRepository;
+import UI.mainMenu;
 
 
 import java.sql.SQLException;
@@ -35,14 +36,17 @@ public class Main {
 //        System.out.println(hey);
 
 
-        Partner RayanAir = new Partner(3,"rayan air","0123483309","MENA & EUROPE","a remplir",Transport.AIRPLANE,PartnerStatus.ACTIVE,"03/09/2024");
-        Contract contract = new Contract(0, LocalDate.parse("2020-01-08"),LocalDate.parse("2020-01-08"),13,"a remlir",true, ContractStatus.ONGOING,RayanAir);
+//        Partner RayanAir = new Partner(3,"rayan air","0123483309","MENA & EUROPE","a remplir",Transport.AIRPLANE,PartnerStatus.ACTIVE,"03/09/2024");
+//        Contract contract = new Contract(0, LocalDate.parse("2020-01-08"),LocalDate.parse("2020-01-08"),13,"a remlir",true, ContractStatus.ONGOING,RayanAir);
         ContractRepository contractRepository = new ContractRepository();
-        if (contractRepository.addContract(contract)){
-            System.out.println("Contract added");
-        }
+//        if (contractRepository.addContract(contract)){
+//            System.out.println("Contract added");
+//        }
+
+//        contractRepository.displayAllContracts();
 
 
+        mainMenu.menu();
 
 
 
