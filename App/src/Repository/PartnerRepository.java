@@ -96,7 +96,7 @@ public class PartnerRepository implements PartnerRepositoryInterface {
 
 
 
-    public static void displayAllPartners() throws SQLException {
+    public  void displayAllPartners() throws SQLException {
 
         List<Partner> partners = getAllPartners();
         int count = partners.size();
