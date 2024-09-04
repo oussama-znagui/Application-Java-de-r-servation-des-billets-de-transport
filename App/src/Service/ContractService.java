@@ -38,7 +38,6 @@ public class ContractService {
 
         System.out.println("PartnerID : ");
         int partnerID = scanner.nextInt();
-
         Partner partner = partnerRepository.getPartnerById(partnerID);
         Contract contract = new Contract(0,startDate,endDate,specialRate,termsOfAgreement,renewable,status,partner);
         return contract;

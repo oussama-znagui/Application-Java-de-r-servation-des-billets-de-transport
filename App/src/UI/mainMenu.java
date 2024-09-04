@@ -2,6 +2,7 @@ package UI;
 
 import Service.ContractService;
 import Service.PartnerService;
+import Service.TicketService;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -9,6 +10,7 @@ import java.util.Scanner;
 public class mainMenu  {
     public static PartnerService partnerService = new PartnerService();
     public static ContractService contractService = new ContractService();
+    public static TicketService ticketService = new TicketService();
 
 
     public static void menu() throws SQLException {
@@ -122,16 +124,25 @@ public class mainMenu  {
         }
     }
 
-    public static void ticketsMenu(){
+    public static void ticketsMenu() throws SQLException {
         System.out.println("Welcome to the tickets menu");
         System.out.println("---------------------");
         System.out.println("1. List des tickets");
-        System.out.println("1. Ajouter un ticket");
-        System.out.println("2. Modifier un ticket");
-        System.out.println("3. Supprimer un ticket");
+        System.out.println("2. Ajouter un ticket");
+        System.out.println("3. Modifier un ticket");
+        System.out.println("4. Supprimer un ticket");
 
         Scanner scanner = new Scanner(System.in);
         int option = scanner.nextInt();
+
+        switch (option){
+            case 1:
+                System.out.println("all tickets");
+            case 2:
+                System.out.println("Ajouter un ticket");
+                ticketService.addTicket();
+
+        }
     }
 
     public static void offresMenu(){

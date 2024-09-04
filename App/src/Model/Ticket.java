@@ -2,12 +2,14 @@ package Model;
 import Enum.Transport;
 import Enum.TicketStatus;
 
+import java.time.LocalDate;
+
 public class Ticket {
     private int id;
     private Transport transportType;
     private float purchasePrice;
     private float salePrice;
-    private String saleDate ;
+    private LocalDate saleDate ;
     private  TicketStatus status;
     private Contract contract;
 
@@ -16,7 +18,7 @@ public class Ticket {
 
     }
 
-    public Ticket(int id, Transport transportType, float purchasePrice, float salePrice, String saleDate, TicketStatus status, Contract contract) {
+    public Ticket(int id, Transport transportType, float purchasePrice, float salePrice, LocalDate saleDate, TicketStatus status, Contract contract) {
        this.id = id;
        this.transportType = transportType;
        this.purchasePrice = purchasePrice;
@@ -55,10 +57,10 @@ public class Ticket {
        this.salePrice = salePrice;
     }
 
-    public String getSaleDate() {
+    public LocalDate getSaleDate() {
        return saleDate;
     }
-    public void setSaleDate(String saleDate) {
+    public void setSaleDate(LocalDate saleDate) {
        this.saleDate = saleDate;
     }
 
