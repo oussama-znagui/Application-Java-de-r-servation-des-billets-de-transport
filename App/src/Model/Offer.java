@@ -3,12 +3,14 @@ package Model;
 import Enum.Discount;
 import Enum.OfferStatus;
 
+import java.time.LocalDate;
+
 public class Offer {
     private int id;
     private String offerName;
     private String description;
-    private String startDate;
-    private String endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private Discount discountType;
     private float discountValue;
     private String conditions;
@@ -19,7 +21,7 @@ public class Offer {
 
     }
 
-    public Offer(int id, String offerName, String description, String startDate, String endDate, Discount discountType, float discountValue, Contract contract) {
+    public Offer(int id, String offerName, String description, LocalDate startDate, LocalDate endDate, Discount discountType, float discountValue, Contract contract) {
         this.id = id;
         this.offerName = offerName;
         this.description = description;
@@ -51,17 +53,17 @@ public class Offer {
         this.description = description;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
