@@ -138,6 +138,7 @@ public class mainMenu  {
         switch (option){
             case 1:
                 System.out.println("all tickets");
+                ticketService.displayAllTickets();
             case 2:
                 System.out.println("Ajouter un ticket");
                 ticketService.addTicket();

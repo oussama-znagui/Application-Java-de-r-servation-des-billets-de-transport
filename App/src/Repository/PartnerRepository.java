@@ -1,6 +1,7 @@
 package Repository;
 
 import Config.Dbconnexion;
+import Model.Contract;
 import Model.Partner;
 import Repository.Interface.PartnerRepositoryInterface;
 
@@ -8,11 +9,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import Enum.Transport;
 import Enum.PartnerStatus;
+import Enum.ContractStatus;
+
 
 
 public class PartnerRepository implements PartnerRepositoryInterface {
@@ -166,6 +170,37 @@ public class PartnerRepository implements PartnerRepositoryInterface {
 
         }
 
+    }
+
+    public List<Contract> getAllPartnerContracts(Partner partner) throws SQLException {
+        Connection con = Dbconnexion.getConnection();
+        PreparedStatement p = null;
+        ResultSet rs = null;
+        List<Contract> contractsList = new ArrayList<>();
+        try {
+            String sql = "select * from contracts where partnerid = ?";
+            p = con.prepareStatement(sql);
+            p.setInt(1, partner.getId());
+            rs = p.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                LocalDate startDate = rs.getDate("startdate").toLocalDate();
+                LocalDate endDate = rs.getDate("enddate").toLocalDate();
+                float specialRate = rs.getFloat("specialrate");
+                String termsOfAgreement = rs.getString("termsofagreement");
+                boolean renewable = rs.getBoolean("renewable");
+                ContractStatus status = ContractStatus.valueOf(rs.getString("status"));
+
+                Contract contract = new Contract(id,startDate,endDate,specialRate,termsOfAgreement,renewable,status,partner);
+                contractsList.add(contract);
+
+            }
+
+        }catch (SQLException e) {
+            System.out.println(e);
+            return null;
+        }
+        return contractsList;
     }
     }
 

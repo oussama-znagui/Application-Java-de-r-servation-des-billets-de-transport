@@ -49,4 +49,8 @@ public class TicketService {
         ticketRepository.addTicket(ticket);
         System.out.println("Ticket Added");
     }
+
+    public void displayAllTickets() throws SQLException {
+        ticketRepository.displayAllTickets();
+    }
 }

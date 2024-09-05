@@ -6,6 +6,7 @@ import Enum.PartnerStatus;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 public class Partner {
     private int id;
@@ -16,6 +17,8 @@ public class Partner {
     private Transport transportType;
     private PartnerStatus status;
     private String creationDate;
+    private List<Contract> contractsList;
+
 
 
     public Partner(int id, String companyName, String contactCommercial,String geographicalArea,String conditionsSpeciales, Transport transportType, PartnerStatus status, String creationDate) {
@@ -59,6 +62,9 @@ public class Partner {
     public String getConditionsSpeciales() {
         return this.conditionsSpeciales;
     }
+    public List<Contract> getContractsList() {
+        return this.contractsList;
+    }
 
     //Setters
     public void setId(int id) {
@@ -85,6 +91,10 @@ public class Partner {
     public void setConditionsSpeciales(String conditionsSpeciales) {
         this.conditionsSpeciales = conditionsSpeciales;
     }
+    public void setContractsList(List<Contract> contractsList) {
+        this.contractsList = contractsList;
+    }
+
 
     public String toString(){
         return  (this.id + "\t\t" + this.companyName + "\t\t" + this.contactCommercial + "\t\t" + this.geographicalArea + "\t\t" + this.conditionsSpeciales + "\t\t" + this.transportType + "\t\t" + this.status + "\t\t" + this.creationDate);
