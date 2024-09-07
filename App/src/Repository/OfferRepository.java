@@ -6,6 +6,8 @@ import Model.Offer;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import Enum.Discount;
 import Enum.OfferStatus;
@@ -30,7 +32,7 @@ public class OfferRepository {
         return offer;
     }
 
-    public void addOffer(Offer offer) {
+    public void addOffer(Offer offer) throws SQLException {
         Connection conn = Dbconnexion.getConnection();
         PreparedStatement ps = null;
         String offerName = offer.getOfferName();
@@ -63,7 +65,7 @@ public class OfferRepository {
 
     }
 
-    public void updateOffer(Offer offer,Offer newOffer) {
+    public void updateOffer(Offer offer,Offer newOffer) throws SQLException {
         Connection conn = Dbconnexion.getConnection();
         PreparedStatement ps = null;
         String offerName = newOffer.getOfferName();
@@ -94,6 +96,68 @@ public class OfferRepository {
 
         }
     }
+
+
+    public void deleteOffer(Offer offer) throws SQLException {
+        Connection conn = Dbconnexion.getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            String sql = "delete from offers where id = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, offer.getId());
+            ps.executeUpdate();
+
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+    }
+
+
+
+    public List<Offer> getAllOffers() throws SQLException {
+        Connection conn = Dbconnexion.getConnection();
+        PreparedStatement ps = null;
+        List<Offer> offers = new ArrayList<Offer>();
+
+        try {
+            String sql = "select * from offers";
+            ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Offer offer = toOffer(rs);
+                offers.add(offer);
+            }
+            return offers;
+        }catch (SQLException e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+
+    public Offer getOfferById(int id) throws SQLException {
+        Connection conn = Dbconnexion.getConnection();
+        PreparedStatement ps = null;
+
+        try{
+            String sql = "select * from offers where id = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Offer offer = toOffer(rs);
+                return offer;
+            }
+            else return null;
+
+        }catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+
 
 
 
