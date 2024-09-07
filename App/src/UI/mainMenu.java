@@ -39,7 +39,7 @@ public class mainMenu  {
                   ticketsMenu();
                   break;
               case 4:
-                  offresMenu();
+                  OfferUI.offresMenu();
                   break;
               default:
                   System.out.println("Invalid option");
@@ -146,15 +146,5 @@ public class mainMenu  {
         }
     }
 
-    public static void offresMenu(){
-        System.out.println("Welcome to the offres menu");
-        System.out.println("---------------------");
-        System.out.println("1. List des offres");
-        System.out.println("1. Ajouter un offre");
-        System.out.println("2. Modifier un offre");
-        System.out.println("3. Supprimer un offre");
 
-        Scanner scanner = new Scanner(System.in);
-        int option = scanner.nextInt();
-    }
 }
