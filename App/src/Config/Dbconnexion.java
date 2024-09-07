@@ -19,6 +19,7 @@ public class Dbconnexion {
             Class.forName("org.postgresql.Driver");
 
              con = DriverManager.getConnection(jdbcUrl, username, password);
+             System.out.println("Connected to PostgreSQL database" + con);
 
             if (con != null) {
                 System.out.println("bravoo.");

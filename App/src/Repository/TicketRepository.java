@@ -95,7 +95,7 @@ public class TicketRepository implements TicketRepositoryInterface {
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e);
         }
     }
 

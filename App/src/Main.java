@@ -14,7 +14,6 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-        Dbconnexion.getConnection();
 
 
       //  Partner allo = new Partner(1,"allo","045389","dze",'d', Transport.BUS,PartnerStatus.ACTIVE,"12/12/2022");
@@ -45,7 +44,7 @@ public class Main {
 
 //        contractRepository.displayAllContracts();
 
-
+//
      mainMenu.menu();
 //
 //        Contract contract = contractRepository.getContractById(3);
