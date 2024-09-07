@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 
 public class Dbconnexion {
     public static Connection con = null;
+
+
     public static void Dbconnexion() {
 
         String jdbcUrl = "jdbc:postgresql://localhost:5432/travel_reservation";
@@ -28,7 +30,7 @@ public class Dbconnexion {
             }
 
         } catch (Exception e) {
-            System.out.println("SQL Exception: " + e.getMessage());
+            System.out.println("SQL Exception : " + e.getMessage());
 
         }
     }
