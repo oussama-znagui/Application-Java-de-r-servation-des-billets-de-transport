@@ -10,6 +10,9 @@ public class OfferService {
 
 
     public void addOffer(Offer offer) throws SQLException {
+        System.out.println("-------> " + offer.getStatus());
         offerRepository.addOffer(offer);
     }
+
+    public
 }

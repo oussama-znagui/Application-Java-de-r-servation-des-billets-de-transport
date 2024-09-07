@@ -62,6 +62,7 @@ public class OfferUI {
         Discount discount = Discount.valueOf(scanner.nextLine());
         System.out.println("discount value : ");
         float discountValue = scanner.nextFloat();
+        scanner.nextLine();
         System.out.println("Conditions : ");
         String conditions = scanner.nextLine();
         System.out.println("offerStatus"+ Arrays.toString(OfferStatus.values()) +" : ");
@@ -74,7 +75,7 @@ public class OfferUI {
 
         LocalDate startdate = LocalDate.parse(startDate1);
         LocalDate enddate = LocalDate.parse(endDate1);
-        Offer offer = new Offer(0,offerName,description,startdate,enddate,discount,discountValue,contract);
+        Offer offer = new Offer(0,offerName,description,startdate,enddate,discount,discountValue,conditions,offerStatus,contract);
         return offer;
     }
 

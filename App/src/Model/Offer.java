@@ -21,7 +21,7 @@ public class Offer {
 
     }
 
-    public Offer(int id, String offerName, String description, LocalDate startDate, LocalDate endDate, Discount discountType, float discountValue, Contract contract) {
+    public Offer(int id, String offerName, String description, LocalDate startDate, LocalDate endDate, Discount discountType, float discountValue,String conditions,OfferStatus status, Contract contract) {
         this.id = id;
         this.offerName = offerName;
         this.description = description;
@@ -29,6 +29,8 @@ public class Offer {
         this.endDate = endDate;
         this.discountType = discountType;
         this.discountValue = discountValue;
+        this.status = status;
+        this.conditions = conditions;
         this.contract = contract;
     }
 
@@ -100,6 +102,11 @@ public class Offer {
     }
     public void setConditions(String conditions) {
         this.conditions = conditions;
+    }
+
+
+    public String toString(){
+        return  (this.id + "\t\t" + this.offerName + "\t\t" + this.description + "\t\t" + this.startDate + "\t\t" + this.endDate + "\t\t" + this.discountType + "\t\t" + this.discountValue + "\t\t" + this.conditions + "\t\t" + this.status + "\t\t -> ContractID : " + this.contract.getId() + "\t\t -> Partner : " + this.contract.getPartner() + "\t\t -> OfferID : " + this.getContract().getPartner().getCompanyName());
     }
 
 

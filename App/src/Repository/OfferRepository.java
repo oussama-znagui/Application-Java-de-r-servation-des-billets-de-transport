@@ -40,20 +40,24 @@ public class OfferRepository {
         LocalDate startDate = offer.getStartDate();
         LocalDate endDate = offer.getEndDate();
         Discount discountType = offer.getDiscountType();
+        float discountValue = offer.getDiscountValue();
         String conditions = offer.getConditions();
         OfferStatus status = offer.getStatus();
         int ContractId = offer.getContract().getId();
 
         try {
-            String sql = "insert into offer (offerName,description,startDate,endDate,discountType,discountValue,conditions,status) values(?,?,?,?,?,?,?,?)";
+            String sql = "insert into offers (offerName,description,startDate,endDate,discountType,discountValue,conditions,status,contractid) values(?,?,?,?,?::Discount,?,?,?::OfferStatus,?)";
             ps = conn.prepareStatement(sql);
             ps.setString(1, offerName);
             ps.setString(2, description);
             ps.setDate(3,Date.valueOf(startDate)  );
             ps.setDate(4,Date.valueOf(endDate)  );
             ps.setString(5, discountType.name());
-            ps.setString(6, conditions);
-            ps.setString(7, status.name());
+            ps.setFloat(6,discountValue);
+            ps.setString(7, conditions);
+            ps.setString(8, status.name());
+            ps.setInt(9, ContractId);
+
             ps.executeUpdate();
 
 
