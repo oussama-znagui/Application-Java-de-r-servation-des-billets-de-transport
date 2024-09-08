@@ -1,12 +1,13 @@
 package Service;
 
 import Model.Offer;
+import Repository.Interface.OfferRepositoryInterface;
 import Repository.OfferRepository;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class OfferService {
+public class OfferService implements OfferRepositoryInterface {
     public static OfferRepository offerRepository = new OfferRepository();
 
 
