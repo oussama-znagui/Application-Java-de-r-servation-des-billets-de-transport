@@ -33,7 +33,7 @@ public class mainMenu  {
                   partnersMenu();
                   break;
               case 2:
-                  contratsMenu();
+                  ContractUI.contratsMenu();
                   break;
               case 3:
                   ticketsMenu();
@@ -88,41 +88,7 @@ public class mainMenu  {
 
     }
 
-    public static void contratsMenu() throws SQLException {
-        System.out.println("Welcome to the contrats menu");
-        System.out.println("---------------------");
-        System.out.println("1. List des contrats");
-        System.out.println("2. Ajouter un contrat");
-        System.out.println("3. Modifier un contrat");
-        System.out.println("4. Supprimer un contrat");
 
-        Scanner scanner = new Scanner(System.in);
-        int option = scanner.nextInt();
-
-        switch(option){
-            case 1:
-                System.out.println("Liste des contrats");
-                contractService.displayAllContracts();
-                contratsMenu();
-                break;
-            case 2:
-                System.out.println("Ajouter un contrat");
-                contractService.addContract();
-                contratsMenu();
-                break;
-            case 3:
-                System.out.println("Modifier un contrat");
-                contractService.updateContract();
-                contratsMenu();
-                break;
-            case 4:
-                System.out.println("Suprimer un contrat");
-                contractService.deleteContract();
-                contratsMenu();
-                break;
-
-        }
-    }
 
     public static void ticketsMenu() throws SQLException {
         System.out.println("Welcome to the tickets menu");

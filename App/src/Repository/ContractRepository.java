@@ -143,7 +143,7 @@ public class ContractRepository implements ContractRepositoryInterface {
             System.out.println("try exec");
             String sql="update contracts set startdate='"+ startdate  + "',enddate='"+ endDate +"',specialrate='"+ specialRate +"',termsOfAgreement='"+ termsOfAgreement +"',renewable='"+ renewable + "',status='" + status + "' where id = " + id;
             ps =conn.prepareStatement(sql);
-            ps.execute();
+            ps.executeUpdate();
 
         }catch(SQLException  e){
             System.out.println(e);

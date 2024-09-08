@@ -75,5 +75,11 @@ public class PartnerService implements PartnerServiceInterface {
         repository.deletePartner(old);
     }
 
+    public Partner getPartnerById(int id) throws SQLException {
+        return repository.getPartnerById(id);
+    }
+
+
+
 
 }

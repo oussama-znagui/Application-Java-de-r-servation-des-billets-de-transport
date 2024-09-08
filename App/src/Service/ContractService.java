@@ -44,9 +44,7 @@ public class ContractService {
 
     }
 
-    public void addContract() throws SQLException {
-        System.out.println("Add Contract : ");
-        Contract contract = getData();
+    public void addContract(Contract contract) throws SQLException {
         repository.addContract(contract);
         System.out.println("Contract added");
     }
@@ -56,25 +54,16 @@ public class ContractService {
         repository.displayAllContracts();
     }
 
-    public void updateContract() throws SQLException {
-        System.out.println("Update Contract : ");
-        displayAllContracts();
-        System.out.println("Contract ID : ");
-        int contractID = scanner.nextInt();
-        scanner.nextLine();
-        Contract contract = repository.getContractById(contractID);
-        Contract newContract = getData();
-        repository.updateContract(contract, newContract);
+    public void updateContract(Contract oldContract,Contract newContract) throws SQLException {
+        repository.updateContract(oldContract, newContract);
 
     }
-    public void deleteContract() throws SQLException {
-        System.out.println("Delete Contract : ");
-        displayAllContracts();
-        System.out.println("Contract ID : ");
-        int contractID = scanner.nextInt();
-        scanner.nextLine();
-        Contract contract = repository.getContractById(contractID);
+    public void deleteContract(Contract contract) throws SQLException {
         repository.deleteContract(contract);
+    }
+
+    public Contract getContractById(int id) throws SQLException {
+        return repository.getContractById(id);
     }
 
 

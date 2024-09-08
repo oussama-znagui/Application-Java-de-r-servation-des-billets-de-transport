@@ -106,7 +106,7 @@ public class Offer {
 
 
     public String toString(){
-        return  (this.id + "\t\t" + this.offerName + "\t\t" + this.description + "\t\t" + this.startDate + "\t\t" + this.endDate + "\t\t" + this.discountType + "\t\t" + this.discountValue + "\t\t" + this.conditions + "\t\t" + this.status + "\t\t -> ContractID : " + this.contract.getId() + "\t\t -> Partner : " + this.contract.getPartner() + "\t\t -> OfferID : " + this.getContract().getPartner().getCompanyName());
+        return  (this.id + "\t\t" + this.offerName + "\t\t" + this.description + "\t\t" + this.startDate + "\t\t" + this.endDate + "\t\t" + this.discountType + "\t\t" + this.discountValue + "\t\t" + this.conditions + "\t\t" + this.status + "\t\t -> ContractID : " + this.contract.getId() + "\t\t -> Partner : " + this.getContract().getPartner().getCompanyName());
     }
 
 

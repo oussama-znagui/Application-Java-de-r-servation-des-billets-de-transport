@@ -77,24 +77,28 @@ public class OfferRepository {
         LocalDate startDate = newOffer.getStartDate();
         LocalDate endDate = newOffer.getEndDate();
         Discount discountType = newOffer.getDiscountType();
+        float discountValue = newOffer.getDiscountValue();
         String conditions = newOffer.getConditions();
         OfferStatus status = newOffer.getStatus();
         int ContractId = newOffer.getContract().getId();
         int offerId = offer.getId();
 
         try {
-            String sql = "update offers set offername = ?, description = ?, startDate = ?, endDate = ?, discountType = ?, discountValue = ?, conditions = ?, status = ?, contractid = ? where id = ?";
+            String sql = "update offers set offername = ?, description = ?, startDate = ?, endDate = ?, discountType = ?::Discount, discountValue = ?, conditions = ?, status = ?::OfferStatus, contractid = ? where id = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, offerName);
             ps.setString(2, description);
             ps.setDate(3, Date.valueOf(startDate)  );
             ps.setDate(4, Date.valueOf(endDate)  );
             ps.setString(5, discountType.name());
-            ps.setString(6, conditions);
-            ps.setString(7, status.name());
-            ps.setInt(8, offerId);
-            ps.setInt(9, offer.getContract().getId());
+            ps.setFloat(6,discountValue);
+            ps.setString(7, conditions);
+            ps.setString(8, status.name());
+
+            ps.setInt(9, newOffer.getContract().getId());
+            ps.setInt(10, offerId);
             ps.executeUpdate();
+            System.out.println("offer updated ");
         }catch (SQLException e) {
             System.out.println(e);
 

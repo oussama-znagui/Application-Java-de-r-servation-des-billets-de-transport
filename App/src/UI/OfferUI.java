@@ -34,13 +34,41 @@ public class OfferUI {
         switch(choice){
             case 1:
                 System.out.println("-----------------");
+                offerService.displayAllOffers();
+                offresMenu();
                 break;
             case 2:
                 System.out.println("Ajouter une offre");
                 System.out.println("----------------");
                 Offer offer = getData();
                 offerService.addOffer(offer);
+                offresMenu();
                 break;
+            case 3:
+                System.out.println("Modifier une offre");
+                System.out.println("---------------");
+                offerService.displayAllOffers();
+                System.out.println("Offer ID");
+                int id = scanner.nextInt();
+                scanner.nextLine();
+                Offer oldOffer = offerService.getOfferById(id);
+                Offer newOffer = getData();
+                offerService.updateOffer(oldOffer, newOffer);
+                offresMenu();
+                break;
+            case 4:
+                System.out.println("Supprimer une offre");
+                System.out.println("---------------");
+                offerService.displayAllOffers();
+                System.out.println("Offer ID");
+                int idd = scanner.nextInt();
+                scanner.nextLine();
+                Offer off = offerService.getOfferById(idd);
+                offerService.deleteOffer(off);
+                offresMenu();
+
+
+
 
 
 
@@ -78,5 +106,9 @@ public class OfferUI {
         Offer offer = new Offer(0,offerName,description,startdate,enddate,discount,discountValue,conditions,offerStatus,contract);
         return offer;
     }
+
+
+
+
 
 }

@@ -4,6 +4,7 @@ import Model.Offer;
 import Repository.OfferRepository;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class OfferService {
     public static OfferRepository offerRepository = new OfferRepository();
@@ -14,5 +15,22 @@ public class OfferService {
         offerRepository.addOffer(offer);
     }
 
-    public
+    public void displayAllOffers() throws SQLException {
+        List<Offer> offers = offerRepository.getAllOffers();
+        for (Offer offer : offers) {
+            System.out.println(offer);
+        }
+    }
+
+    public void deleteOffer(Offer offer) throws SQLException {
+        offerRepository.deleteOffer(offer);
+    }
+
+    public void updateOffer(Offer offer,Offer newOffer) throws SQLException {
+        offerRepository.updateOffer(offer, newOffer);
+    }
+
+    public Offer getOfferById(int id) throws SQLException {
+        return offerRepository.getOfferById(id);
+    }
 }
