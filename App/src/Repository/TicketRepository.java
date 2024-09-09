@@ -126,7 +126,7 @@ public class TicketRepository implements TicketRepositoryInterface {
         PreparedStatement ps = null;
 
         try{
-            String sql ="update tickets set transporttype = ?,purchaseprice = ?,saleprice = ?,saleDate = ?,status = ? where id = ? \n";
+            String sql ="update tickets set transporttype = ?::Transport ,purchaseprice = ?,saleprice = ?,saleDate = ?,status = ?::TicketStatus where id = ? \n";
             ps = conn.prepareStatement(sql);
             ps.setString(1,newTicket.getTransportType().name());
             ps.setDouble(2,newTicket.getPurchasePrice());
@@ -134,6 +134,7 @@ public class TicketRepository implements TicketRepositoryInterface {
             ps.setDate(4,java.sql.Date.valueOf(newTicket.getSaleDate()));
             ps.setString(5,newTicket.getStatus().name());
             ps.setInt(6,ticket.getId());
+            ps.executeUpdate();
 
         }catch (SQLException e) {
             System.out.println(e);

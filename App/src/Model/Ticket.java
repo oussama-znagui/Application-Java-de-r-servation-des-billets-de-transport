@@ -80,7 +80,7 @@ public class Ticket {
 
 
     public String toString(){
-       return "Ticket N° : " + this.id + " infos ->\t" + this.transportType + "\t" + this.purchasePrice + "\t" + this.salePrice + "\t" + this.saleDate + "\t" + this.status + "\t" + this.contract.toString();
+       return "Ticket N° : " + this.id + " infos ->\t" + this.transportType + "\t" + this.purchasePrice + "\t" + this.salePrice + "\t" + this.saleDate + "\t" + this.status + "\t -> Contract : " + this.contract.toString();
     }
 
 

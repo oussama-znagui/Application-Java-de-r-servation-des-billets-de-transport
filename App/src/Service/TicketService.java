@@ -43,14 +43,22 @@ public class TicketService {
 
     }
 
-    public void addTicket() throws SQLException {
-        System.out.println("Add Ticket : ");
-        Ticket ticket = getData();
+    public void addTicket(Ticket ticket) throws SQLException {
+
+
         ticketRepository.addTicket(ticket);
-        System.out.println("Ticket Added");
+
     }
 
     public void displayAllTickets() throws SQLException {
         ticketRepository.displayAllTickets();
+    }
+
+    public void updateTicket(Ticket oldTicket,Ticket newTicket) throws SQLException {
+        ticketRepository.updateTicket(oldTicket,newTicket);
+    }
+
+    public Ticket getTicketById(int ticketID) throws SQLException {
+        return ticketRepository.getTicket(ticketID);
     }
 }
