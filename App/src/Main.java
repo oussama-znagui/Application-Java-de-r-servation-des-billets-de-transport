@@ -45,7 +45,7 @@ public class Main {
 //        contractRepository.displayAllContracts();
 
 //
-     mainMenu.menu();
+     mainMenu.pricipaleMenu();
 //
 //        Contract contract = contractRepository.getContractById(3);
 //

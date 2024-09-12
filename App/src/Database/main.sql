@@ -77,3 +77,10 @@ CREATE TABLE Clients(
 );
 
 
+CREATE TABLE Trips(
+                      id SERIAL PRIMARY KEY,
+                      t_from varchar,
+                      t_to varchar,
+                      weight int
+);
+
