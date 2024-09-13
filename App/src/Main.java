@@ -1,10 +1,13 @@
 import Config.Dbconnexion;
+import Model.Client;
 import Model.Contract;
 import Model.Partner;
 import Enum.Transport;
 import Enum.PartnerStatus;
 import Enum.ContractStatus;
+import Repository.ClientRepository;
 import Repository.ContractRepository;
+import UI.ClientUI;
 import UI.mainMenu;
 
 
@@ -46,11 +49,10 @@ public class Main {
 
 //
      mainMenu.pricipaleMenu();
-//
-//        Contract contract = contractRepository.getContractById(3);
-//
-//
-//    System.out.println(contract.getPartner());
+////
+//        ClientRepository clientRepository = new ClientRepository();
+//        Client client = new Client("oussama8","znagui.info@gmail.com","0669666205");
+//        System.out.println(clientRepository.getClientByMail(client.getEmail()));
 
 
 

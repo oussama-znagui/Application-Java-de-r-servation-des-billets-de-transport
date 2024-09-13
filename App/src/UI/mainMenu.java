@@ -28,6 +28,8 @@ public class mainMenu  {
                     menu();
                     break;
                 case 2:
+                    ClientUI.clientMenu();
+                    break;
 
 
 
