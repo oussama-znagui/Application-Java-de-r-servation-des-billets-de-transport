@@ -24,7 +24,7 @@ public class ClientService {
             return clientRepository.getClientByMail(email);
         }
         else {
-                System.out.println("Client with email " + email + " does not exist");
+
             return null;
         }
     }

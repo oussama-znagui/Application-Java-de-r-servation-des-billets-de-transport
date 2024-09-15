@@ -33,24 +33,31 @@ public class ClientUI {
                         System.out.println("Vos Informations : ");
                         System.out.println("-------------------------");
                         System.out.println(clientService.getClientByMail(email));
+                        System.out.println("------------------------");
+                        System.out.println("Vous voulez Modifier Vos Informations(y/n) : ");
+                        char c = scanner.next().charAt(1);
+                        scanner.nextLine();
+                        switch (c){
+                            case 'y':
+
+                        }
+
                     }else {
                         System.out.println("L'Email que vous avez saisie est incorrect ");
                     }
-
-
-
-
-
-
-
-
-
-
             }
 
-
-
         }
+    }
+
+    public static void updateClientMenu() {
+        Client newClient = getClientData();
+        if (clientService.getClientByMail(newClient.getEmail()) == null){
+
+        }else {
+            System.out.println("Email que vous avez saisie exist");
+        }
+
     }
 
 
@@ -60,7 +67,16 @@ public class ClientUI {
         System.out.println("Votre nom complet : ");
         String nom = scanner.nextLine();
         System.out.println("Votre email : ");
-        String email = scanner.nextLine();
+        String email = null;
+        int i = 0;
+        do {
+            if (i == 0){
+                email = scanner.nextLine();
+            }
+
+            i++;
+        }while (clientService.getClientByMail(nom) != null);
+
         System.out.println("Votre N° de telephone : ");
         String telephone = scanner.nextLine();
         return new Client(nom, email, telephone);
