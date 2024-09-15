@@ -51,8 +51,9 @@ public class Main {
      mainMenu.pricipaleMenu();
 ////
 //        ClientRepository clientRepository = new ClientRepository();
-//        Client client = new Client("oussama8","znagui.info@gmail.com","0669666205");
-//        System.out.println(clientRepository.getClientByMail(client.getEmail()));
+//
+//        System.out.println(clientRepository.getClientByMail("znagui.info@gmail.com"));
+//        System.out.println(clientRepository.getClientByMail("znagui.info@gmail2.com"));
 
 
 

@@ -3,6 +3,7 @@ import Enum.Transport;
 import Enum.TicketStatus;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Ticket {
     private int id;
@@ -12,6 +13,9 @@ public class Ticket {
     private LocalDate saleDate ;
     private  TicketStatus status;
     private Contract contract;
+    private LocalDate tripDate;
+    private LocalTime trioHour;
+
 
 
    public Ticket(){

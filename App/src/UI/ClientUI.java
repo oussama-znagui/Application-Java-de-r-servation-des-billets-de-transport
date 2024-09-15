@@ -35,10 +35,17 @@ public class ClientUI {
                         System.out.println(clientService.getClientByMail(email));
                         System.out.println("------------------------");
                         System.out.println("Vous voulez Modifier Vos Informations(y/n) : ");
-                        char c = scanner.next().charAt(1);
+                        char c = scanner.next().charAt(0);
                         scanner.nextLine();
                         switch (c){
                             case 'y':
+                                updateClientMenu(clientService.getClientByMail(email));
+                                ClientUI.clientMenu();
+                                break;
+                            case 'n':
+                                ClientUI.clientMenu();
+                                break;
+
 
                         }
 
@@ -50,14 +57,9 @@ public class ClientUI {
         }
     }
 
-    public static void updateClientMenu() {
+    public static void updateClientMenu(Client client) {
         Client newClient = getClientData();
-        if (clientService.getClientByMail(newClient.getEmail()) == null){
-
-        }else {
-            System.out.println("Email que vous avez saisie exist");
-        }
-
+        clientService.updateClient(client, newClient);
     }
 
 
@@ -67,18 +69,25 @@ public class ClientUI {
         System.out.println("Votre nom complet : ");
         String nom = scanner.nextLine();
         System.out.println("Votre email : ");
-        String email = null;
-        int i = 0;
-        do {
-            if (i == 0){
-                email = scanner.nextLine();
-            }
-
-            i++;
-        }while (clientService.getClientByMail(nom) != null);
-
+        String email = scanner.nextLine();
         System.out.println("Votre N° de telephone : ");
         String telephone = scanner.nextLine();
         return new Client(nom, email, telephone);
     }
+
+
+
+//    String email = null;
+//    int i = 0;
+//        do {
+//        if (i == 0){
+//            email = scanner.nextLine();
+//        }else {
+//            System.out.println("l'email que vous avez saisie exist deja ");
+//            System.out.println("Autre email svp : ");
+//            email = scanner.nextLine();
+//        }
+//        i++;
+//    }while (clientService.getClientByMail(email) != null);
+
 }

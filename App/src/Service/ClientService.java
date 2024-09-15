@@ -28,5 +28,11 @@ public class ClientService {
             return null;
         }
     }
+
+
+
+    public boolean updateClient(Client client,Client newClient) {
+        return clientRepository.updateClient(client, newClient);
+    }
 }
 
