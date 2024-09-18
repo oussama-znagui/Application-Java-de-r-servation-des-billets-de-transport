@@ -2,9 +2,14 @@ package Service;
 
 import Model.Client;
 import Repository.ClientRepository;
+import Repository.Interface.ClientRepositoryInterface;
 
-public class ClientService {
+import java.util.List;
+
+public class ClientService  {
     public static ClientRepository clientRepository = new ClientRepository();
+
+
 
 
     public boolean addClient(Client client) {

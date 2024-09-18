@@ -15,14 +15,14 @@ public class Ticket {
     private Contract contract;
     private LocalDate tripDate;
     private LocalTime trioHour;
-
+    private Trip trip;
 
 
    public Ticket(){
 
     }
 
-    public Ticket(int id, Transport transportType, float purchasePrice, float salePrice, LocalDate saleDate, TicketStatus status, Contract contract) {
+    public Ticket(int id, Transport transportType, float purchasePrice, float salePrice, LocalDate saleDate, TicketStatus status, Contract contract,LocalDate tripDate, LocalTime trioHour, Trip trip) {
        this.id = id;
        this.transportType = transportType;
        this.purchasePrice = purchasePrice;
@@ -30,6 +30,9 @@ public class Ticket {
        this.saleDate = saleDate;
        this.status = status;
        this.contract = contract;
+       this.tripDate = tripDate;
+       this.trioHour = trioHour;
+       this.trip = trip;
     }
 
     public int getId() {
@@ -80,6 +83,25 @@ public class Ticket {
     }
     public void setContract(Contract contract) {
        this.contract = contract;
+    }
+
+    public LocalDate getTripDate() {
+       return tripDate;
+    }
+    public void setTripDate(LocalDate tripDate) {
+       this.tripDate = tripDate;
+    }
+    public LocalTime getTrioHour() {
+       return trioHour;
+    }
+    public void setTrioHour(LocalTime trioHour) {
+       this.trioHour = trioHour;
+    }
+    public Trip getTrip() {
+       return trip;
+    }
+    public void setTrip(Trip trip) {
+       this.trip = trip;
     }
 
 

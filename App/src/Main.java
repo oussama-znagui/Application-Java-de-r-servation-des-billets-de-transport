@@ -5,8 +5,10 @@ import Model.Partner;
 import Enum.Transport;
 import Enum.PartnerStatus;
 import Enum.ContractStatus;
+import Model.Trip;
 import Repository.ClientRepository;
 import Repository.ContractRepository;
+import Repository.TripRepository;
 import UI.ClientUI;
 import UI.mainMenu;
 
@@ -47,13 +49,17 @@ public class Main {
 
 //        contractRepository.displayAllContracts();
 
-//
+
      mainMenu.pricipaleMenu();
-////
+//
 //        ClientRepository clientRepository = new ClientRepository();
 //
 //        System.out.println(clientRepository.getClientByMail("znagui.info@gmail.com"));
 //        System.out.println(clientRepository.getClientByMail("znagui.info@gmail2.com"));
+
+//
+//        TripRepository tripRepository = new TripRepository();
+//       System.out.println(tripRepository.getTripById(1));
 
 
 
