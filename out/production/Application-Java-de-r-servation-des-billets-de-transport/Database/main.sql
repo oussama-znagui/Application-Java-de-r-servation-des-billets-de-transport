@@ -1,3 +1,5 @@
+-- DB SCRIPT FOR AppV1
+
 CREATE TYPE PartnerStatus AS ENUM('ACTIVE','EXPIRED','SUSPENDED');
 CREATE TYPE Transport AS ENUM('AIRPLANE','TRAIN','BUS');
 CREATE TYPE ContractStatus AS ENUM('ONGOING','FINISHED','SUSPENDED');
@@ -65,4 +67,20 @@ ALTER TABLE Tickets
     ADD FOREIGN KEY (ContractID) REFERENCES Contracts(id);
 
 
+
+-- DB SCRIPT FOR AppV2
+
+CREATE TABLE Clients(
+    userName varchar,
+    email varchar PRIMARY KEY not null ,
+    phone varchar
+);
+
+
+CREATE TABLE Trips(
+                      id SERIAL PRIMARY KEY,
+                      t_from varchar,
+                      t_to varchar,
+                      weight int
+);
 

@@ -3,6 +3,7 @@ import Enum.Transport;
 import Enum.TicketStatus;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Ticket {
     private int id;
@@ -12,13 +13,16 @@ public class Ticket {
     private LocalDate saleDate ;
     private  TicketStatus status;
     private Contract contract;
+    private LocalDate tripDate;
+    private LocalTime trioHour;
+    private Trip trip;
 
 
    public Ticket(){
 
     }
 
-    public Ticket(int id, Transport transportType, float purchasePrice, float salePrice, LocalDate saleDate, TicketStatus status, Contract contract) {
+    public Ticket(int id, Transport transportType, float purchasePrice, float salePrice, LocalDate saleDate, TicketStatus status, Contract contract,LocalDate tripDate, LocalTime trioHour, Trip trip) {
        this.id = id;
        this.transportType = transportType;
        this.purchasePrice = purchasePrice;
@@ -26,6 +30,9 @@ public class Ticket {
        this.saleDate = saleDate;
        this.status = status;
        this.contract = contract;
+       this.tripDate = tripDate;
+       this.trioHour = trioHour;
+       this.trip = trip;
     }
 
     public int getId() {
@@ -78,9 +85,28 @@ public class Ticket {
        this.contract = contract;
     }
 
+    public LocalDate getTripDate() {
+       return tripDate;
+    }
+    public void setTripDate(LocalDate tripDate) {
+       this.tripDate = tripDate;
+    }
+    public LocalTime getTrioHour() {
+       return trioHour;
+    }
+    public void setTrioHour(LocalTime trioHour) {
+       this.trioHour = trioHour;
+    }
+    public Trip getTrip() {
+       return trip;
+    }
+    public void setTrip(Trip trip) {
+       this.trip = trip;
+    }
+
 
     public String toString(){
-       return "Ticket N° : " + this.id + " infos ->\t" + this.transportType + "\t" + this.purchasePrice + "\t" + this.salePrice + "\t" + this.saleDate + "\t" + this.status + "\t" + this.contract.toString();
+       return "Ticket N° : " + this.id + " infos ->\t" + this.transportType + "\t" + this.purchasePrice + "\t" + this.salePrice + "\t" + this.saleDate + "\t" + this.status + "\t -> Contract : " + this.contract.toString();
     }
 
 

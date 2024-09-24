@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public interface PartnerServiceInterface {
     public Partner getData();
-    public void addPartner() throws SQLException;
+    public void addPartner(Partner partner) throws SQLException;
     public void displayAllPartners() throws SQLException;
-    public void updatePartner() throws SQLException;
-    public void deletePartner() throws SQLException;
+    public void updatePartner(Partner oldPartner,Partner newPartner) throws SQLException;
+    public void deletePartner(Partner partner) throws SQLException;
 }

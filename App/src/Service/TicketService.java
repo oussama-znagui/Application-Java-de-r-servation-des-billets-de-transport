@@ -14,43 +14,33 @@ import java.util.Scanner;
 
 import Enum .TicketStatus;
 import Enum .Transport;
+import Service.Interface.TicketServiceInterface;
 
 
-public class TicketService {
+public class TicketService implements TicketServiceInterface {
     public Scanner scanner = new Scanner(System.in);
     public TicketRepository ticketRepository = new TicketRepository();
     public ContractRepository contractRepository = new ContractRepository();
     public PartnerRepository partnerRepository = new PartnerRepository();
 
-    public Ticket getData() throws SQLException {
-        System.out.println("transport Type"+ Arrays.toString(Transport.values()) + " : ");
-        Transport transportType = Transport.valueOf(scanner.next());
-        System.out.println("purchase Price : ");
-        float purchasePrice = scanner.nextFloat();
-        System.out.println("sale Price : ");
-        float salePrice = scanner.nextFloat();
-        System.out.println("purchase Date : ");
-        String saleDate1 = scanner.next();
-        LocalDate saleDate  = LocalDate.parse(saleDate1);
-        System.out.println("ticket Status"+ Arrays.toString(Transport.values()) + " : ");
-        TicketStatus ticketStatus = TicketStatus.valueOf(scanner.next());
-        contractRepository.displayAllContracts();
-        System.out.println("ContractID : ");
-        int ContractID = scanner.nextInt();
-        Contract contract = contractRepository.getContractById(ContractID);
-        Ticket ticket = new Ticket(0,transportType,purchasePrice,salePrice,saleDate,ticketStatus,contract);
-        return ticket;
 
-    }
 
-    public void addTicket() throws SQLException {
-        System.out.println("Add Ticket : ");
-        Ticket ticket = getData();
+    public void addTicket(Ticket ticket) throws SQLException {
+
+
         ticketRepository.addTicket(ticket);
-        System.out.println("Ticket Added");
+
     }
 
     public void displayAllTickets() throws SQLException {
         ticketRepository.displayAllTickets();
+    }
+
+        public void updateTicket(Ticket oldTicket,Ticket newTicket) throws SQLException {
+        ticketRepository.updateTicket(oldTicket,newTicket);
+    }
+
+    public Ticket getTicketById(int ticketID) throws SQLException {
+        return ticketRepository.getTicket(ticketID);
     }
 }

@@ -6,6 +6,8 @@ import Model.Offer;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import Enum.Discount;
 import Enum.OfferStatus;
@@ -30,7 +32,7 @@ public class OfferRepository {
         return offer;
     }
 
-    public void addOffer(Offer offer) {
+    public void addOffer(Offer offer) throws SQLException {
         Connection conn = Dbconnexion.getConnection();
         PreparedStatement ps = null;
         String offerName = offer.getOfferName();
@@ -38,20 +40,24 @@ public class OfferRepository {
         LocalDate startDate = offer.getStartDate();
         LocalDate endDate = offer.getEndDate();
         Discount discountType = offer.getDiscountType();
+        float discountValue = offer.getDiscountValue();
         String conditions = offer.getConditions();
         OfferStatus status = offer.getStatus();
         int ContractId = offer.getContract().getId();
 
         try {
-            String sql = "insert into offer (offerName,description,startDate,endDate,discountType,discountValue,conditions,status) values(?,?,?,?,?,?,?,?)";
+            String sql = "insert into offers (offerName,description,startDate,endDate,discountType,discountValue,conditions,status,contractid) values(?,?,?,?,?::Discount,?,?,?::OfferStatus,?)";
             ps = conn.prepareStatement(sql);
             ps.setString(1, offerName);
             ps.setString(2, description);
             ps.setDate(3,Date.valueOf(startDate)  );
             ps.setDate(4,Date.valueOf(endDate)  );
             ps.setString(5, discountType.name());
-            ps.setString(6, conditions);
-            ps.setString(7, status.name());
+            ps.setFloat(6,discountValue);
+            ps.setString(7, conditions);
+            ps.setString(8, status.name());
+            ps.setInt(9, ContractId);
+
             ps.executeUpdate();
 
 
@@ -63,7 +69,7 @@ public class OfferRepository {
 
     }
 
-    public void updateOffer(Offer offer,Offer newOffer) {
+    public void updateOffer(Offer offer,Offer newOffer) throws SQLException {
         Connection conn = Dbconnexion.getConnection();
         PreparedStatement ps = null;
         String offerName = newOffer.getOfferName();
@@ -71,29 +77,95 @@ public class OfferRepository {
         LocalDate startDate = newOffer.getStartDate();
         LocalDate endDate = newOffer.getEndDate();
         Discount discountType = newOffer.getDiscountType();
+        float discountValue = newOffer.getDiscountValue();
         String conditions = newOffer.getConditions();
         OfferStatus status = newOffer.getStatus();
         int ContractId = newOffer.getContract().getId();
         int offerId = offer.getId();
 
         try {
-            String sql = "update offers set offername = ?, description = ?, startDate = ?, endDate = ?, discountType = ?, discountValue = ?, conditions = ?, status = ?, contractid = ? where id = ?";
+            String sql = "update offers set offername = ?, description = ?, startDate = ?, endDate = ?, discountType = ?::Discount, discountValue = ?, conditions = ?, status = ?::OfferStatus, contractid = ? where id = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, offerName);
             ps.setString(2, description);
             ps.setDate(3, Date.valueOf(startDate)  );
             ps.setDate(4, Date.valueOf(endDate)  );
             ps.setString(5, discountType.name());
-            ps.setString(6, conditions);
-            ps.setString(7, status.name());
-            ps.setInt(8, offerId);
-            ps.setInt(9, offer.getContract().getId());
+            ps.setFloat(6,discountValue);
+            ps.setString(7, conditions);
+            ps.setString(8, status.name());
+
+            ps.setInt(9, newOffer.getContract().getId());
+            ps.setInt(10, offerId);
             ps.executeUpdate();
+            System.out.println("offer updated ");
         }catch (SQLException e) {
             System.out.println(e);
 
         }
     }
+
+
+    public void deleteOffer(Offer offer) throws SQLException {
+        Connection conn = Dbconnexion.getConnection();
+        PreparedStatement ps = null;
+
+        try {
+            String sql = "delete from offers where id = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, offer.getId());
+            ps.executeUpdate();
+
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+    }
+
+
+
+    public List<Offer> getAllOffers() throws SQLException {
+        Connection conn = Dbconnexion.getConnection();
+        PreparedStatement ps = null;
+        List<Offer> offers = new ArrayList<Offer>();
+
+        try {
+            String sql = "select * from offers";
+            ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Offer offer = toOffer(rs);
+                offers.add(offer);
+            }
+            return offers;
+        }catch (SQLException e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+
+    public Offer getOfferById(int id) throws SQLException {
+        Connection conn = Dbconnexion.getConnection();
+        PreparedStatement ps = null;
+
+        try{
+            String sql = "select * from offers where id = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Offer offer = toOffer(rs);
+                return offer;
+            }
+            else return null;
+
+        }catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+
 
 
 

@@ -84,7 +84,7 @@ public class TicketRepository implements TicketRepositoryInterface {
         Connection conn = Dbconnexion.getConnection();
         PreparedStatement ps = null;
         try{
-            String query = "INSERT INTO tickets (transporttype,purchasePrice,salePrice,saleDate,status,contractID) VALUES (?::Transport,?,?,?,?::TicketStatus,?)";
+            String query = "INSERT INTO tickets (transporttype,purchasePrice,salePrice,saleDate,status,contractID,tripDate,tripHour,tripid) VALUES (?::Transport,?,?,?,?::TicketStatus,?,?,?,?)";
             ps = conn.prepareStatement(query);
             ps.setString(1,ticket.getTransportType().name());
             ps.setDouble(2,ticket.getPurchasePrice());
@@ -92,6 +92,9 @@ public class TicketRepository implements TicketRepositoryInterface {
             ps.setDate(4,java.sql.Date.valueOf(ticket.getSaleDate()));
             ps.setString(5,ticket.getStatus().name());
             ps.setInt(6,ticket.getContract().getId());
+            ps.setDate(7,java.sql.Date.valueOf(ticket.getTripDate()));
+            ps.setTime(8,java.sql.Time.valueOf(ticket.getTrioHour()));
+            ps.setInt(9,ticket.getTrip().getId());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -126,7 +129,7 @@ public class TicketRepository implements TicketRepositoryInterface {
         PreparedStatement ps = null;
 
         try{
-            String sql ="update tickets set transporttype = ?,purchaseprice = ?,saleprice = ?,saleDate = ?,status = ? where id = ? \n";
+            String sql ="update tickets set transporttype = ?::Transport ,purchaseprice = ?,saleprice = ?,saleDate = ?,status = ?::TicketStatus where id = ? \n";
             ps = conn.prepareStatement(sql);
             ps.setString(1,newTicket.getTransportType().name());
             ps.setDouble(2,newTicket.getPurchasePrice());
@@ -134,6 +137,7 @@ public class TicketRepository implements TicketRepositoryInterface {
             ps.setDate(4,java.sql.Date.valueOf(newTicket.getSaleDate()));
             ps.setString(5,newTicket.getStatus().name());
             ps.setInt(6,ticket.getId());
+            ps.executeUpdate();
 
         }catch (SQLException e) {
             System.out.println(e);

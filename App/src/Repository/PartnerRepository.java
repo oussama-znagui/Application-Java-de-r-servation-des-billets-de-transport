@@ -101,7 +101,7 @@ public class PartnerRepository implements PartnerRepositoryInterface {
 
 
     public  void displayAllPartners() throws SQLException {
-
+    
         List<Partner> partners = getAllPartners();
         int count = partners.size();
         System.out.println(count);

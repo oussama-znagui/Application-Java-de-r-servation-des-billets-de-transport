@@ -40,10 +40,7 @@ public class PartnerService implements PartnerServiceInterface {
        return partner;
    };
 
-    public void addPartner() throws SQLException {
-        System.out.println("Add Partner");
-
-        Partner partner = getData();
+    public void addPartner(Partner partner) throws SQLException {
         repository.addPartner(partner);
 
 
@@ -53,27 +50,19 @@ public class PartnerService implements PartnerServiceInterface {
         repository.displayAllPartners();
     }
 
-    public void updatePartner() throws SQLException {
-        System.out.println("Update Partner");
-        displayAllPartners();
-        System.out.println("Enter ID : ");
-        int id = scanner.nextInt();
-        scanner.nextLine();
-
-        Partner old = repository.getPartnerById(id);
-        Partner newp = getData();
-        repository.updatePartner(old,newp);
+    public void updatePartner(Partner oldPartner,Partner newPartner) throws SQLException {
+        repository.updatePartner(oldPartner,newPartner);
     }
 
-    public void deletePartner() throws SQLException {
-        System.out.println("Delete Partner");
-        displayAllPartners();
-        System.out.println("Enter ID : ");
-        int id = scanner.nextInt();
-        scanner.nextLine();
-        Partner old = repository.getPartnerById(id);
-        repository.deletePartner(old);
+    public void deletePartner(Partner partner) throws SQLException {
+        repository.deletePartner(partner);
     }
+
+    public Partner getPartnerById(int id) throws SQLException {
+        return repository.getPartnerById(id);
+    }
+
+
 
 
 }
